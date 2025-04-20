@@ -1,0 +1,94 @@
+# so uh this is a modified kde breeze theme.
+
+# paperwhite - #fcfcfc
+# icongrey - #4d4d4d
+# plasmablue - #3daee9
+# black - #000000
+
+# Global Property
+# General settings
+# title-font: "VCR OSD Mono 14"
+title-text: ""
+message-font: "VCR OSD Mono 14"
+message-color: "#7f8c8d"
+message-bg-color: "#4d4d4d" # TODO: whatever is this for?
+desktop-color: "#000000" # black
+desktop-image: "elevator.png"
+
+
+# title
+# NOTE: can't put this in a vbox because GRUB is crap and item highlighting
+#   is broken if you put the boot_menu in a vbox...
+# TODO: file bug report
++ label {
+    top = 50%-150 # (150+43+32) menu + height + spacer
+    left = 0%
+    width = 100%
+    text = "CHOOSE OPERATING SYSTEM."
+    align = "center"
+    font = "VCR OSD Mono 16"
+    color = "#ffffff"
+}
+
+# Show the boot menu
++ boot_menu {
+    left = 50%-250
+    width = 400
+    # NB: this is scooped upwards from the middle.
+    #     effectively 50px are below and the remaining 150 above
+    top = 50%-100
+    height = 200
+    # Icon
+    icon_width = 4
+    icon_height = 0
+    # Item
+    item_height = 33
+    item_padding = 1
+    item_icon_space = 0
+    item_spacing = 1
+    item_font = "VCR OSD Mono 16"
+    item_color = "#7f8c8d"
+    selected_item_font = "VCR OSD Mono 16"
+    selected_item_color = "#ffffff"
+}
+
++ vbox {
+    left = 50%-400 # pretty much centered
+    top = 90%-20
+    width = 400 # same as menu
+    + hbox {
+        + label { width = 400 align = "left" color = "#7f8c8d" font = "VCR OSD Mono 14" text = "[Enter] BEGIN BOOTUP" }
+        + label { width = 400 align = "right" color = "#7f8c8d" font = "VCR OSD Mono 14" text = "[Up and Down Key] NAVIGATE" }
+    }
+    + hbox {
+        + label { width = 400 align = "left" color = "#7f8c8d" font = "VCR OSD Mono 14" text = "[E] EDIT SEQUENCE" }
+        + label { width = 400 align = "right" color = "#7f8c8d" font = "VCR OSD Mono 14" text = "[C] COMMAND SHELL" }
+    }
+}
+
+# Show a styled horizontal progress bar
++ progress_bar {
+    id = "__timeout__"
+    left = 0
+    top = 50%+100
+    width = 100%
+    height = 32
+    show_text = false
+    bar_style = "progress_bar_*.png"
+    highlight_style = "progress_bar_hl_*.png"
+}
+
+# Show text progress bar
++ progress_bar {
+    id = "__timeout__"
+    left = 50%-200 # same as menu
+    top = 50%+66 # (50+16) half menu + spacer
+    width = 400 # same as menu
+    height = 19 # 14pt
+    show_text = true
+    font = "VCR OSD Mono 14"
+    text_color = "#ffffff"
+    align = "center"
+    text = "@TIMEOUT_NOTIFICATION_SHORT@"
+    bar_style = "progress_bar2_*.png"
+}
