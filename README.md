@@ -23,8 +23,9 @@ git clone https://github.com/its-mrarsikk/ultragrub-theme.git
 cd ultragrub-theme
 sudo make install
 ```
-In order to apply the theme, edit your `/etc/default/grub` and add or replace this line:
+In order to apply the theme, edit your `/etc/default/grub` and add or replace these lines:
 ```ini
+GRUB_TERMINAL=gfxterm
 GRUB_THEME=/boot/grub/themes/ultragrub/theme.txt
 ```
 Then, run your distro's command to update GRUB's configuration:
