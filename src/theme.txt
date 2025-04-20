@@ -33,7 +33,7 @@ desktop-image: "elevator.png"
 # Show the boot menu
 + boot_menu {
     left = 50%-250
-    width = 400
+    width = 100%
     # NB: this is scooped upwards from the middle.
     #     effectively 50px are below and the remaining 150 above
     top = 50%-100
