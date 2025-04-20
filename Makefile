@@ -1,8 +1,18 @@
-MKFONT ?= grub-mkfont
+ifeq ($(shell command -v grub-mkfont),)
+  ifeq ($(shell command -v grub2-mkfont),)
+    $(error Neither grub-mkfont nor grub2-mkfont is installed or not in the PATH. Not continuing)
+  else
+    MKFONT := grub2-mkfont
+  endif
+else
+  MKFONT := grub-mkfont
+endif
+
 SRC_DIR ?= ./src
 TARGET_DIR ?= ./ultragrub
+PREVIEW_COMMAND ?= grub2-theme-preview
 PREVIEW_RESOLUTION ?= 1280x720
-INSTALL_DIR ?= /boot/grub/themes/$(notdir $(TARGET_DIR))
+INSTALL_DIR ?= $(shell [ -d /boot/grub2 ] && echo /boot/grub2 || echo /boot/grub)/themes/$(notdir $(TARGET_DIR))
 
 IMAGES := $(addprefix $(TARGET_DIR)/, $(notdir $(wildcard $(SRC_DIR)/*.png)))
 TTFS := $(notdir $(wildcard $(SRC_DIR)/*.ttf))
@@ -23,7 +33,7 @@ $(TARGET_DIR):
 	mkdir -p $@
 
 preview: $(TARGET_DIR)/theme.txt
-	grub2-theme-preview --resolution $(PREVIEW_RESOLUTION) $(TARGET_DIR)
+	$(PREVIEW_COMMAND) --resolution $(PREVIEW_RESOLUTION) $(TARGET_DIR)
 
 install: $(TARGET_DIR)/theme.txt
 	install -dvm 755 $(INSTALL_DIR)
