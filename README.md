@@ -17,6 +17,7 @@ First, make sure GNU Make and GRUB are installed.
   <!-- todo: verify that grub2 is correct -->
 - **On Arch-based systems:**
   `sudo pacman -S make grub`
+  
 Then, clone the repository and run `sudo make install`:
 ```bash
 git clone https://github.com/its-mrarsikk/ultragrub-theme.git
