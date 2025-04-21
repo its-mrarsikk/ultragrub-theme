@@ -9,14 +9,14 @@ I wanted to make a cool theme about a game I love, and this is what happened.
 </details>
 
 ## Installation
-First, make sure GNU Make and GRUB are installed.
+First, make sure GNU Make, GRUB and Git are installed.
 - **On Debian/Ubuntu/Mint-based systems:**
-  `sudo apt install make grub-pc`
+  `sudo apt install make grub-pc git`
 - **On Fedora/CentOS/RHEL-based systems:**
-  `sudo dnf install make grub2`
+  `sudo dnf install make grub2 git`
   <!-- todo: verify that grub2 is correct -->
 - **On Arch-based systems:**
-  `sudo pacman -S make grub`
+  `sudo pacman -S make grub git`
   
 Then, clone the repository and run `sudo make install`:
 ```bash
